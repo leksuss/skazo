@@ -7,7 +7,7 @@
 - Backend/API: **Django + DRF**
 - DB: **PostgreSQL**
 - Очередь: **Celery + Redis**
-- Медиа: **S3-compatible** (dev: MinIO, prod: S3/R2)
+- Медиа: **S3-compatible** (dev: SeaweedFS (S3), prod: S3/R2)
 - Менеджерка MVP: **Django Admin + кастомные admin views**
 - Читалка: **Vue** (позже можно Nuxt)
 - Обновления статусов: MVP **polling**, позже WebSocket (**Django Channels** или отдельный realtime слой)
@@ -39,7 +39,7 @@
 Ответственность:
 - единый источник истины для контент-модели и статусов задач
 
-### 5) `media` (S3/MinIO)
+### 5) `media` (S3/SeaweedFS)
 Ответственность:
 - хранение изображений/видео и вариантов
 - CDN (опционально в prod)
@@ -118,9 +118,9 @@ Celery выполняет цепочку:
 ## Dev vs Prod (практично)
 
 ### Dev (локально)
-- Postgres + Redis + MinIO поднимаются контейнерами
+- Postgres + Redis + SeaweedFS (S3) поднимаются контейнерами
 - Django web и Celery worker можно тоже в контейнерах или на хосте (как удобнее команде)
-- медиа хранятся в MinIO
+- медиа хранятся в SeaweedFS (S3)
 
 ### Prod
 - Postgres (managed или контейнер)

@@ -16,7 +16,7 @@
 
 ## Медиа-хранилище
 - **S3-совместимое хранилище**:
-  - MVP/dev: **MinIO**
+  - MVP/dev: **SeaweedFS (S3 gateway)**
   - prod: AWS S3 / Cloudflare R2 / любой S3 compatible
 
 ## Реалтайм/обновления статусов
