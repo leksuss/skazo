@@ -4,3 +4,13 @@
 
 Документация: см. `docs/README.md`.
 
+## Dev: качество кода
+
+Установка dev-зависимостей и хуков:
+
+- `uv sync --group dev`
+- `uv run --group dev pre-commit install`
+
+Проверка:
+
+- `make lint`

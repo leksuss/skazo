@@ -9,5 +9,30 @@ dependencies = [
   "psycopg[binary]>=3.3.2",
 ]
 
+[dependency-groups]
+dev = [
+  "pre-commit>=4.3.0",
+  "ruff>=0.9.0",
+]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 88
+src = ["src"]
+extend-exclude = [
+  "src/**/migrations/**",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+ignore = [
+  "E501", # line-length: оставляем за форматтером/договорённостью
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
 [tool.uv]
 package = false
