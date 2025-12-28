@@ -3,8 +3,10 @@ name = "skazo"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
+  "boto3>=1.42.17",
   "Django>=5.1",
   "django-environ>=0.11",
+  "psycopg[binary]>=3.3.2",
 ]
 
 [tool.uv]

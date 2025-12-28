@@ -3,7 +3,7 @@ from pathlib import Path
 import environ
 
 
-ROOT_DIR = Path(__file__).resolve().parents[4]
+ROOT_DIR = Path(__file__).resolve().parents[3]
 SRC_DIR = ROOT_DIR / "src"
 
 env = environ.Env()
@@ -70,10 +70,10 @@ ASGI_APPLICATION = "config.asgi.application"
 
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": ROOT_DIR / "db.sqlite3",
-    }
+    "default": env.db(
+        "DATABASE_URL",
+        default=f"sqlite:///{ROOT_DIR / 'db.sqlite3'}",
+    )
 }
 
 
@@ -93,3 +93,9 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# S3-compatible storage (MinIO in dev)
+S3_ENDPOINT_URL = env("S3_ENDPOINT_URL", default="http://localhost:8333")
+S3_ACCESS_KEY_ID = env("S3_ACCESS_KEY_ID", default="seaweed")
+S3_SECRET_ACCESS_KEY = env("S3_SECRET_ACCESS_KEY", default="seaweed123456")
+S3_BUCKET = env("S3_BUCKET", default="skazo")
